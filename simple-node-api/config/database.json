@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "node-crud",
+    "host": "database",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "node-crud-test",
+    "host": "database",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "node-crud",
+    "host": "database",
+    "dialect": "postgres"
+  }
+}

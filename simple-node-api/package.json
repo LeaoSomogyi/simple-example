@@ -1,0 +1,19 @@
+{
+  "name": "simple-node-api",
+  "version": "1.0.0",
+  "description": "Simple CRUD API with PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sequelize db:migrate && sequelize-cli db:seed:all && node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.19.0",
+    "sequelize-cli": "^5.5.1"
+  }
+}

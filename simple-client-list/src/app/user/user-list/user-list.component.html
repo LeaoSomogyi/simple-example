@@ -1,0 +1,58 @@
+<div class="main" *ngIf="isLoaded">
+    <div class="container">
+        <section class="row" *ngIf="users.length > 0">
+            <div class="col-md-7" *ngIf="message">
+                <app-message text="{{message}}" cssClass="success"></app-message>
+            </div>
+            <table class="table table-borderless table-striped table-responsive-sm">
+                <thead>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Senha</th>
+                    <th>Ações</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td><span>{{user.id}}</span></td>
+                        <td><span>{{user.name}}</span></td>
+                        <td><span>{{user.email}}</span></td>
+                        <td><span>{{user.password}}</span></td>
+                        <td>
+                            <a [routerLink]="['/user/', user.id]" class="mr-1" title="Editar">
+                                <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+                            </a>
+                            <a class="mr-1 text-danger" href="javascript:;" (click)="open(remove, user.id)" title="Excluir">
+                                <fa-icon [icon]="['fas', 'trash']"></fa-icon>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <section class="row" *ngIf="users.length == 0">
+            <div class="col-md-12">
+                <span>Nenhum resultado encontrado.</span>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Modal Remove -->
+<ng-template #remove let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title text-danger">
+            <fa-icon [icon]="['fas', 'exclamation-triangle']"></fa-icon> Atenção!
+        </h5>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p>Você deseja realmente remover esse usuário?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" (click)="removeUser()">Sim</button>
+        <button type="button" class="btn btn-danger" (click)="modal.dismiss('Close click')">Não</button>
+    </div>
+</ng-template>
