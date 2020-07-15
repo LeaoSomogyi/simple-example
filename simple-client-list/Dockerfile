@@ -1,12 +1,13 @@
-FROM nikolaik/python-nodejs:python3.8-nodejs13-alpine as npm_install
+FROM nikolaik/python-nodejs:python3.8-nodejs13-alpine as yarn_install
 WORKDIR /usr/src/app
-RUN npm i -g @angular/cli
+RUN yarn global add @angular/cli
 COPY ["package.json", "package.json"]
-RUN npm install --silent
+COPY ["yarn.lock", "yarn.lock"]
+RUN yarn install
 
-FROM npm_install as angular_build
+FROM yarn_install as angular_build
 COPY ["src", "src"]
-COPY ["angular.json", "tsconfig.json", "tsconfig.app.json", "tslint.json", "./"]
+COPY ["angular.json", "tsconfig.json", "tsconfig.app.json", "tsconfig.base.json", "tsconfig.spec.json", "tslint.json", "./"]
 RUN ng build --build-optimizer --aot
 
 FROM nginx:alpine as appclient_final

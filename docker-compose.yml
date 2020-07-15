@@ -9,57 +9,65 @@ networks:
         driver: bridge
 
 services:
-    api:
-        ports: 
-            - "3000:3000"
-        container_name: api
-        image: api
-        restart: always
-        build: 
-            context: simple-node-api
-            dockerfile: Dockerfile
-        networks: 
-            - simple-network
-        depends_on: 
-            - database
-
-    client:
-        ports: 
-            - "4200:4200"
-        container_name: client
-        image: client
-        restart: always
-        build: 
-            context: simple-client-list
-            dockerfile: Dockerfile
-        networks: 
-            - simple-network
-        depends_on: 
-            - database
-    
-    database:
-        container_name: database
+    postgres:
+        container_name: postgres
         image: postgres
-        restart: always
+        restart: unless-stopped
         environment:
             POSTGRES_DB: node-crud
+            POSTGRES_USER: postgres
             POSTGRES_PASSWORD: postgres
-        ports:
+        ports: 
             - "5432:5432"
         volumes: 
             - data:/var/lib/postgresql/data
         networks: 
             - simple-network
 
+    api:
+        container_name: api
+        image: api
+        restart: unless-stopped
+        build: 
+            context: simple-node-api
+            dockerfile: Dockerfile
+        ports: 
+            - "3000:3000"
+        environment:
+            - NODE_ENV=production
+            - DATABASE=node-crud
+            - USERNAME=postgres
+            - PASSWORD=postgres
+            - HOST=postgres
+        networks: 
+            - simple-network
+        depends_on: 
+            - postgres
+
+    client:
+        container_name: client
+        image: client
+        restart: unless-stopped
+        build: 
+            context: simple-client-list
+            dockerfile: Dockerfile
+        ports: 
+            - "4200:4200"
+        networks: 
+            - simple-network
+        depends_on: 
+            - api
+            - postgres
+
     pgadmin:
         container_name: pgadmin
         image: dpage/pgadmin4
         environment:
-          PGADMIN_DEFAULT_EMAIL: "leaosomogyi@hotmail.com"
-          PGADMIN_DEFAULT_PASSWORD: "PgAdmin2020!"
+            PGADMIN_DEFAULT_EMAIL: "leaosomogyi@hotmail.com"
+            PGADMIN_DEFAULT_PASSWORD: "PgAdmin2020!"
         ports:
-          - "15432:80"
+            - "15432:80"
         depends_on:
-          - database
+            - postgres
         networks:
-          - simple-network
+            - simple-network

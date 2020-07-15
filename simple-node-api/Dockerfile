@@ -1,6 +1,7 @@
 FROM node:latest
-COPY . /var/www
-WORKDIR /var/www
-RUN npm i
-ENTRYPOINT ["npm", "start"]
-EXPOSE 3000
+WORKDIR /api
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
+COPY . .
+ENTRYPOINT ["./init.sh"]

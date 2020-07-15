@@ -1,6 +1,12 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["./src/app/shared/*"],
+      "@user/*": ["./src/app/user/*"],
+      "@environment/*": ["./src/environments/*"]
+    },
     "outDir": "./out-tsc/app",
     "types": []
   },

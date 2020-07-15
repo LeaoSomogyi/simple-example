@@ -5,15 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sequelize db:migrate && sequelize-cli db:seed:all && node ."
+    "start": "node .",
+    "migrate": "sequelize-cli db:migrate",
+    "seed": "sequelize-cli db:seed:all"
   },
   "keywords": [],
-  "author": "",
+  "author": "Felipe Somogyi",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "pg": "^7.12.1",
-    "sequelize": "^5.19.0",
+    "pg": "^8.3.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LeaoSomogyi/simple-example.git"
+  },
+  "devDependencies": {
     "sequelize-cli": "^5.5.1"
   }
 }

@@ -3,21 +3,36 @@
     "username": "postgres",
     "password": "postgres",
     "database": "node-crud",
-    "host": "database",
-    "dialect": "postgres"
+    "host": "localhost",
+    "dialect": "postgres",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "underscoredAll": true
+    }
   },
   "test": {
     "username": "postgres",
     "password": "postgres",
     "database": "node-crud-test",
-    "host": "database",
-    "dialect": "postgres"
+    "host": "postgres",
+    "dialect": "postgres",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "underscoredAll": true
+    }
   },
   "production": {
     "username": "postgres",
     "password": "postgres",
     "database": "node-crud",
-    "host": "database",
-    "dialect": "postgres"
+    "host": "postgres",
+    "dialect": "postgres",
+    "define": {
+      "timestamps": true,
+      "underscored": true,
+      "underscoredAll": true
+    }
   }
 }
