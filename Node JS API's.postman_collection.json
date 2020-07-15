@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "afe2ae90-adea-4541-9dec-5a39b15d8dfe",
+		"name": "Node JS API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Simple User Crud",
+			"item": [
+				{
+					"name": "Save User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 2,\n\t\"name\": \"Outro Dev\",\n\t\"email\": \"dev@hotmail.com\",\n\t\"password\": \"123@456\",\n\t\"created_at\": \"2019-09-26 23:25:51.191-03\",\n\t\"updated_at\": \"2019-09-26 23:25:51.191-03\"\n}"
+						},
+						"url": {
+							"raw": "{{node_url}}/users",
+							"host": [
+								"{{node_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{node_url}}/users",
+							"host": [
+								"{{node_url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{node_url}}/users/:id",
+							"host": [
+								"{{node_url}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{node_url}}/users/:id",
+							"host": [
+								"{{node_url}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
