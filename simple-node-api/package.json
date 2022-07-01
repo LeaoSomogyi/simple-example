@@ -13,16 +13,16 @@
   "author": "Felipe Somogyi",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "pg": "^8.3.0",
-    "pg-hstore": "^2.3.3",
-    "sequelize": "^5.5.1"
+    "express": "^4.18.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.4.1"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/LeaoSomogyi/simple-example.git"
   },
   "devDependencies": {
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.2"
   }
 }
