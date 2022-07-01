@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@user/user.service';
 import { User } from '@user/user.model';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
@@ -14,7 +14,7 @@ export class UserCreateComponent implements OnInit {
 
   public title: string;
   public user: User;
-  public formRegister: FormGroup;
+  public formRegister: UntypedFormGroup;
   public buttonText: string;
   public isLoaded: boolean;
   public message: string;
@@ -23,7 +23,7 @@ export class UserCreateComponent implements OnInit {
 
   constructor(private userService: UserService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private datePipe: DatePipe,
     private router: Router) {
     this.isLoaded = false;

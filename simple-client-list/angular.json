@@ -114,7 +114,6 @@
       }
     }
   },
-  "defaultProject": "simple-client-list",
   "cli": {
     "analytics": "c80e33d5-5dd3-424d-a43f-eaa4f9adfcbf"
   }
